@@ -4,16 +4,19 @@ use strict;
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 
-use lab2::st00::st00;
+use lab3::st00::st00;
+use lab3::st07::st07;
 
 my @MODULES = 
 (
 	\&ST00::st00,
+	\&ST07::st07
 );
 
 my @NAMES = 
 (
 	"00. Sample",
+	"07. Gorinov"
 );
 
 Lab2Main();
