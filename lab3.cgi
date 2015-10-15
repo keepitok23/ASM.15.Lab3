@@ -6,17 +6,20 @@ use CGI::Carp qw(fatalsToBrowser);
 
 use lab3::st00::st00;
 use lab3::st07::st07;
+use lab3::st30::st30;
 
 my @MODULES = 
 (
 	\&ST00::st00,
-	\&ST07::st07
+	\&ST07::st07,
+	\&ST30::st30,
 );
 
 my @NAMES = 
 (
 	"00. Sample",
-	"07. Gorinov"
+	"07. Gorinov",
+	"30. Pereverzev",
 );
 
 Lab2Main();
