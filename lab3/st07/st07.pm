@@ -11,7 +11,7 @@ sub st07 {
 
 	my @MainList = ();
 	my $db = DBI->connect(
-		"DBI:mysql:database=MYDB;host=localhost",
+		"DBI:mysql:database=lab3;host=localhost",
 		"root", 
 		"",
 		{'RaiseError' => 1}
@@ -25,7 +25,7 @@ sub st07 {
 		if ( ( $name ne "" ) && ( $surename ne "") ){
 			my $sql = $db->prepare("
 				INSERT INTO 
-					MAN
+					st07
 				(name, surename, patronymic) 
 				VALUES 
 					(?, ?, ?)");
@@ -41,7 +41,7 @@ sub st07 {
 		if ( ( $name ne "" ) && ( $surename ne "") ){
 			my $sql = $db->prepare("
 				UPDATE 
-					MAN
+					st07
 				SET 
 					name=?, 
 					surename=?, 
@@ -56,7 +56,7 @@ sub st07 {
 		my $id = $page->param('id');
 		my $sql = $db->prepare("
 			DELETE FROM 
-				MAN
+				st07
 			WHERE
 				id=?");
 		$sql->execute($id);
@@ -72,7 +72,7 @@ sub st07 {
 					my ($name, $surename) = split(/--/, $h{$i});
 					my $sql = $db->prepare("
 						INSERT INTO 
-							MAN
+							st07
 						(name, surename) 
 						VALUES 
 							(?, ?)");
@@ -97,7 +97,7 @@ sub st07 {
 	}
 
 	sub load {	
-		my $sql = $db->prepare("SELECT * FROM man");
+		my $sql = $db->prepare("SELECT * FROM st07");
 		$sql->execute();
 		while (my $ref = $sql->fetchrow_hashref()) {
 			my %a = (
