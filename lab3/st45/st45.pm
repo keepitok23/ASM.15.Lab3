@@ -142,7 +142,7 @@ sub show_form{
 	return 1;
 }
 sub create_table{
-	$dbh = DBI->connect("DBI:mysql:st45:localhost:3306", "root", "1111");
+	$dbh = DBI->connect("DBI:mysql:st45:localhost", "root", "");
 	$sql = "CREATE TABLE IF NOT EXISTS card_file(
 			_id int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			_name varchar(20) NOT NULL,
