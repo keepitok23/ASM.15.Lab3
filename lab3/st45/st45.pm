@@ -136,7 +136,7 @@ sub show_form{
 	}
 	print <<"	END";
 			<p><input type="submit" value="Accept">
-			<p><input type="button" value="Start page" OnClick="location.href='st455.pl';">
+			<p><a href=\"$global->{selfurl}\">Start page</a>
 		</form><hr>
 	END
 	return 1;
