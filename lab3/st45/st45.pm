@@ -83,8 +83,8 @@ sub show_person{
 		print "<i>$_[$i]</i><p>";			
 	}
 	print <<"	END";
-		<input type="button" value="Edit" onClick="location.href='?edit=$_[0]&$global->{student}';">
-		<input type="button" value="Delete" onClick="location.href='?del=$_[0]&$global->{student}';">
+		<input type="button" value="Edit" onClick="location.href='?edit=$_[0]&student=$global->{student}';">
+		<input type="button" value="Delete" onClick="location.href='?del=$_[0]&student=$global->{student}';">
 		<a href='#add';">Add person</a>
 	END
 	return 1;
@@ -117,7 +117,7 @@ sub bind_{
 sub show_form{
 	print <<"	END";
 		<hr><form>
-		<i><input type=hidden name="student" value=global->{student}>
+		<i><input type=hidden name="student" value=$global->{student}>
 	END
 	if(@_){
 		print <<"		END";
