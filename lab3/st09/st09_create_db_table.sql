@@ -1,0 +1,13 @@
+
+CREATE DATABASE IF NOT EXISTS `lab3`;
+USE `lab3`;
+
+
+CREATE TABLE IF NOT EXISTS `st09` (
+  `id` int(11) DEFAULT NULL,
+  `name` varchar(50) COLLATE cp1251_bin DEFAULT NULL,
+  `family` varchar(50) COLLATE cp1251_bin DEFAULT NULL,
+  `address` varchar(50) COLLATE cp1251_bin DEFAULT NULL,
+  `type` varchar(50) COLLATE cp1251_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+
