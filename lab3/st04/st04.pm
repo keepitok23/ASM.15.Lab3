@@ -13,7 +13,7 @@ my $run=1;
 
 my $currentkeys=["Name","Status","Address","EMail","Extra"];
 my $filename="st04";
-my $dsn = "DBI:mysql:database=lab3;host=localhost";
+my $dsn = "DBI:mysql:database=data;host=localhost";
 my $username = "root";
 my $pass = "root";
 my $attr= {'RaiseError' => 1, 'AutoCommit' => 1};
@@ -84,6 +84,7 @@ sub correct{
       my $request="UPDATE st04 SET Name=?, Status=?, Address=?, EMail=?, Extra=? where UID=?;";
     $dbh->do($request,undef,$q->param('Name'),$q->param('Status'),$q->param('Address'),$q->param('EMail'),(defined $q->param('Extra'))? $q->param('Extra'):"",$UID);
     }
+    $sth->finish();
 }
 
 #############
@@ -94,12 +95,13 @@ sub correct{
 ############
 sub Delete{
     my $UID=$q->param("UID");
-    my $sth = $dbh->prepare("select * from st04 where uid=$UID;");
-    $sth->execute();
+    my $sth = $dbh->prepare("select * from st04 where uid=?;");
+    $sth->execute($UID);
     my $ref = $sth->fetchrow_hashref();
     if ($ref->{"Name"}) {
-      $dbh->do("delete from st04 where uid=$UID");
+      $dbh->do("delete from st04 where uid=?",undef,$UID);
     }
+    $sth->finish();
 }
 
 #############
@@ -158,6 +160,7 @@ sub show{
 							      -maxlength=>30)} @$currentkeys))."\n\t\t</td>\n";
     $content.="\t</tr>\n".$q->end_form;
     $content.=$q->end_table;
+    $sth->finish();
 }
 
 #############
@@ -209,6 +212,6 @@ sub st04{
 			  -charset=>"windows-1251");
   print $header;
   print $content;
-  
+  $dbh->disconnect();
 }
 1;
