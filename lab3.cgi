@@ -9,6 +9,7 @@ use lab3::st04::st04;
 use lab3::st07::st07;
 use lab3::st09::st09;
 use lab3::st26::st26;
+use lab3::st29::st29;
 use lab3::st30::st30;
 use lab3::st45::st45;
 
@@ -19,6 +20,7 @@ my @MODULES =
 	\&ST07::st07,
 	\&ST09::st09,
 	\&ST26::st26,
+	\&ST29::st29,
 	\&ST30::st30,
 	\&ST45::st45,
 );
@@ -30,6 +32,7 @@ my @NAMES =
 	"07. Gorinov",
 	"09. Greznev",
 	"26. Mikaelian",
+	"29. Novozhentsev",
 	"30. Pereverzev",
 	"45. Yazkov",
 );
