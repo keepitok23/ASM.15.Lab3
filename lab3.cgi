@@ -13,6 +13,7 @@ use lab3::st26::st26;
 use lab3::st28::st28;
 use lab3::st29::st29;
 use lab3::st30::st30;
+use lab3::st39::st39;
 use lab3::st45::st45;
 use lab3::st46::st46;
 
@@ -27,6 +28,7 @@ my @MODULES =
 	\&ST28::st28,
 	\&ST29::st29,
 	\&ST30::st30,
+	\&ST39::st39,
 	\&ST45::st45,
 	\&ST46::st46,
 );
@@ -42,6 +44,7 @@ my @NAMES =
 	"28. Nikolaeva",
 	"29. Novozhentsev",
 	"30. Pereverzev",
+	"39. Stupin",
 	"45. Yazkov",
 	"46. Bushmakin",
 );
