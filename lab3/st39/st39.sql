@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `st39` (
 
 INSERT INTO `st39` (`id`, `performer`, `song`, `date`) VALUES
 (1, 'Linkin Park', 'My December', '2000'),
-(2, 'Eurythmics', 'Sweet Derams', '1983'),
+(2, 'Eurythmics', 'Sweet Dreams', '1983'),
 (3, 'The Beatles', 'Eleanor Rigby', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
