@@ -120,7 +120,7 @@ sub st37 {
         $q->delete_all;
 
         print $q->redirect(
-            -uri => '/cgi-bin/lab2.cgi?student=37',
+            -uri => '/cgi-bin/lab3.cgi?student=37',
         );
     };
 
@@ -195,7 +195,7 @@ sub st37 {
         $q->delete_all;
 
         print $q->redirect(
-            -uri => '/cgi-bin/lab2.cgi?student=37',
+            -uri => '/cgi-bin/lab3.cgi?student=37',
         );
     }
 
@@ -247,7 +247,7 @@ sub st37 {
         $q->delete_all();
 
         print $q->redirect(
-            -uri => '/cgi-bin/lab2.cgi?student=37',
+            -uri => '/cgi-bin/lab3.cgi?student=37',
         );
     }
 
@@ -286,7 +286,7 @@ sub st37 {
         $q->delete_all;
 
         print $q->redirect(
-            -uri => '/cgi-bin/lab2.cgi?student=37',
+            -uri => '/cgi-bin/lab3.cgi?student=37',
         );
     }
 
