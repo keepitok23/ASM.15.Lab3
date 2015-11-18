@@ -13,7 +13,7 @@ my $run=1;
 
 my $currentkeys=["Name","Status","Address","EMail","Extra"];
 my $filename="st04";
-my $dsn = "DBI:mysql:database=data;host=localhost";
+my $dsn = "DBI:mysql:database=lab3;host=localhost";
 my $username = "root";
 my $pass = "root";
 my $attr= {'RaiseError' => 1, 'AutoCommit' => 1};
@@ -57,7 +57,7 @@ sub add{
     if ($q->param("Name")){
 #       if ($q->param("Extra")){
       my $sql="insert into st04 (Name,Status,Address,EMail,Extra) values(?,?,?,?,?);";
-      $dbh->do($sql,undef, $q->param('Name'),$q->param('Status'),$q->param('Address'),$q->param('EMail'),$q->param('Extra'));
+      $dbh->do($sql,undef, $q->param('Name'),$q->param('Status'),$q->param('Address'),$q->param('EMail'),(defined $q->param('Extra'))? $q->param('Extra'):"");
 #       }else{
 #       my $sql="insert into st04 (Name,Status,Address,EMail) values(?,?,?,?);".
 # 	      $q->param('Name').",".
@@ -178,7 +178,7 @@ sub clear{
 
 sub Menu{
     
-    $content.= "<H1>Lab2 by Borisenko</H1>\n";
+    $content.= "<H1>Lab3 by Borisenko</H1>\n";
     $content.= $q->start_form."\n";
     $content.="\t".$q->hidden("student",$global->{student})."\n";
     $content.="\t".$q->submit('action','Clear table')."\n";
