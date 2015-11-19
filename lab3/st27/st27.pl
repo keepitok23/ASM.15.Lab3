@@ -41,7 +41,7 @@ sub load{
 			save(select_fields($name, $book, $book_id));
 			$record = {	"name",$name,"book",$book,"book_id",$book_id};
 push(@mass, $record);}
-		}
+		
 		dbmclose(%hash);
 		return 1;
 	
