@@ -63,7 +63,6 @@ sub del{
 }
 
 sub show_kart{
-	#$sth = execute_("SELECT * FROM st27.kart");
 	$sql="SELECT * FROM st27.kart";
 	$sth = $dbh->prepare($sql);
 	$sth->execute();
