@@ -15,6 +15,7 @@ use lab3::st28::st28;
 use lab3::st29::st29;
 use lab3::st30::st30;
 use lab3::st32::st32;
+use lab3::st33::st33;
 use lab3::st39::st39;
 use lab3::st45::st45;
 use lab3::st46::st46;
@@ -26,12 +27,13 @@ my @MODULES =
 	\&ST04::st04,
 	\&ST07::st07,
 	\&ST09::st09,
-	\&ST14::st14,
+	\&ST09::st14,
 	\&ST26::st26,
 	\&ST28::st28,
 	\&ST29::st29,
 	\&ST30::st30,
 	\&ST32::st32,
+	\&ST33::st33,
 	\&ST39::st39,
 	\&ST45::st45,
 	\&ST46::st46,
@@ -44,12 +46,13 @@ my @NAMES =
 	"04. Borisenko",
 	"07. Gorinov",
 	"09. Greznev",
-	"14. Ivanova",
+	"09. Ivanova",
 	"26. Mikaelian",
 	"28. Nikolaeva",
 	"29. Novozhentsev",
 	"30. Pereverzev",
-	"30. Pyatakhina",
+	"32. Pyatakhina",
+	"33. Rekhlova",
 	"39. Stupin",
 	"45. Yazkov",
 	"46. Bushmakin",
