@@ -2,6 +2,7 @@ package ST01;
 
 use strict;
 use CGI;
+use DBI;
 use CGI::Carp qw(fatalsToBrowser);
 
 
