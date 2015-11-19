@@ -33,17 +33,18 @@ sub save_kart_sql{
 	
 }
 sub load{
-	if(@_){
-		dbmopen(my %hdb, $_[0], 0666) || die;
-		while((my $key, my $value) = each(%hdb)){
-			(my $name, my $book, my $book_id) = split(/##/,$value);
+	my $name,my $book,my $book_id,my $record;
+	@mass = (); %hash=();
+	dbmopen(%hash, "lib_kart", 0666) || die "can't open DBM file!\n";
+		while((my $key, my $value) = each(%hash)){
+			( $name,  $book,  $book_id) = split(/##/,$value);
 			save(select_fields($name, $book, $book_id));
+			$record = {	"name",$name,"book",$book,"book_id",$book_id};
+push(@mass, $record);}
 		}
-		dbmclose(%hdb);
+		dbmclose(%hash);
 		return 1;
-	}else{
-		return 0;
-	}
+	
 }
 
 sub del{
