@@ -87,7 +87,7 @@ sub show_kart{
 
 sub show_rec{
 	print "<p><b>Record</b><p>"; #$#_
-	for(my $i = 1; $i < ($#_ + 1); $i++){
+	for(my $i = 1; $i < (scalar @_ + 1); $i++){
 		print "<i>$_[$i]</i><p>";			
 	}
 	print <<"	END";
