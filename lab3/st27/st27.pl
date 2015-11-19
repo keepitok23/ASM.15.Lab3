@@ -9,7 +9,7 @@ use DBI qw(:sql_types);
 my ($q, $global) = @_;
 my ($dbh, $sth, $sql);
 
-
+my @mass = (); my %hash = ();
 
 
 
@@ -36,17 +36,22 @@ sub load{
 	my $name,my $book,my $book_id,my $record;
 	@mass = (); %hash=();
 	dbmopen(%hash, "lib_kart", 0666) || die "can't open DBM file!\n";
-		while((my $key, my $value) = each(%hash)){
+		while((my $key, my $value) = each(%hash))
+		{
 			( $name,  $book,  $book_id) = split(/##/,$value);
-			save(select_fields($name, $book, $book_id));
-			$record = {	"name",$name,"book",$book,"book_id",$book_id};
-push(@mass, $record);}
-		
+			my $sth = $dbh->prepare("INSERT INTO st27.kart (_name, book, book_id, author) VALUES (?,?,?,null)"); 
+			$sth->execute("$name","$book","$book_id"); 
+			$sth->finish(); 		
+		}
 		dbmclose(%hash);
+		
 		return 1;
 	
 }
 
+
+		
+		
 sub del{
 	if($_[0]){
 	$sql = "DELETE FROM st27.kart where _id = ?";
@@ -81,7 +86,7 @@ sub show_kart{
 }
 
 sub show_rec{
-	print "<p><b>Record</b><p>";
+	print "<p><b>Record</b><p>"; #$#_
 	for(my $i = 1; $i < ($#_ + 1); $i++){
 		print "<i>$_[$i]</i><p>";			
 	}
@@ -117,8 +122,13 @@ sub show_form{
 			<p>Enter author: <input name="author" value=$_[5]></i>
 			<p><input type="submit" value="Accept">
 		END
+	}else{
+		print <<"		END";
+			<p>Load from DBM <input type=hidden name="dbm_load" value="libkart">
+			<p><input type="submit" value="Accept">
+			</form><hr color = 'brown'>
+		END
 	}
-	
 	return 1;
 }
 
@@ -157,6 +167,7 @@ sub main{
 	create_table();
 	head();
 	save_kart_sql();
+	load(param("dbm_load"));
 	del(param("del"));
 	show_kart(param("edit"));
 	$dbh->disconnect();
