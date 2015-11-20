@@ -1,6 +1,8 @@
 #!wperl.exe
 ##package ST00;
 
+sub st27
+{
 use 5.010;
 use strict;
 use warnings;
@@ -175,6 +177,7 @@ sub main{
 
 
 main();
+}
 1;
 
 	
