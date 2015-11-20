@@ -17,9 +17,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `st47` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE cp1251_bin NOT NULL,
-  `surename` varchar(200) COLLATE cp1251_bin NOT NULL,
-  `patronymic` varchar(200) COLLATE cp1251_bin DEFAULT NULL,
+  `cname` varchar(200) COLLATE cp1251_bin NOT NULL,
+  `ctown` varchar(200) COLLATE cp1251_bin NOT NULL,
+  `clocation` varchar(200) COLLATE cp1251_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin AUTO_INCREMENT=4 ;
 
