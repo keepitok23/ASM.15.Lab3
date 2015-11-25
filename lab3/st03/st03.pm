@@ -28,9 +28,11 @@ sub st03
 		print "<form method=\"post\">
 			<input type=\"hidden\" name=\"student\" value=\"".$global->{student}."\">
 			<h1>List of diploma's themes</h1><br>";
+			print "	<button name=\"action\" type=\"submit\" value=\"5\">Import from dbm-file</button><br>";
+			
 			print "Student name: <input type=\"text\" name=\"name\" value=\"$name\"><br>";
 			print "Student diploma theme: <input type=\"text\" name=\"diplom\" value=\"$diplom\"><br>";
-			print "Student diploma theme: <input type=\"text\" name=\"dipRuk\" value=\"$dipRuk\">";
+			print "Student diploma rukovoditel: <input type=\"text\" name=\"dipRuk\" value=\"$dipRuk\">";
 			
 			print "	<button name=\"action\" type=\"submit\" value=\"0\">Add</button>";
 			print "</form>";
@@ -136,33 +138,34 @@ sub st03
 		$sql->execute($id);
 		$sql->finish();
 	}
-	sub import {
-		my $file = $q->param('file');	
-		if ( $file ne "" ){
-			my %hash;
-			dbmopen(%hash, $file, 0644);
-			for (my $i = 0; ; $i++){
-				if (exists $hash{$i}){
-					my ($name, $diplom) = split(/--/, $hash{$i});
-					my $sql = $database->prepare("
-						INSERT INTO 
-							st03
-						(name, diplom) 
-						VALUES 
-							(?, ?)");
-					$sql->execute($name,$diplom);
-					$sql->finish();
-				} else {
-					last;
-				}		
-			}
-			dbmclose(%hash);
-		}	
+	sub import {	
+		my %hash;
+		dbmopen(%hash, "dbm_03", 0666);
+		while ( my ($key, $value) = each %hash )
+			{
+				my ($name, $diplom,$dipRuk) = split(/--/, $value);
+				my $sql = $database->prepare("
+					INSERT INTO 
+						 `database03`.`st03`
+					(
+					
+					`name` ,
+					`diplom` ,
+					`dipRuk` ,					
+					)
+					VALUES 
+						(?, ?)");
+				$sql->execute($name,$diplom,$dipRuk);
+				$sql->finish();
+			} 
+
+		dbmclose(%hash);
+		
 	}	
 	
 	print $q->header;
 
-	dbmopen(%hash, "dbm_03",0666);
+	
 	my $com = $q->param('action');
 	if($com>=0 && $com<=2)
 		{	
@@ -171,6 +174,6 @@ sub st03
 	@menu[4]->();
 	@menu[3]->();
 	print "<a href=\"$global->{selfurl}\">Back to main menu</a>";
-	dbmclose(%hash);
+
 }
 1;
