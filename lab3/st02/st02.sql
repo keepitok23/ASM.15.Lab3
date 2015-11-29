@@ -1,0 +1,11 @@
+CREATE DATABASE `data` /*!40100 DEFAULT CHARACTER SET cp1251 */;
+
+CREATE TABLE `st02` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
