@@ -10,7 +10,7 @@ sub st03
 {
 	my ($q, $global) = @_;
 	my @list = ();
-	my @menu = (\&add, \&edit, \&delete, \&showTable, \&showBut,\&import);
+	my @menu = (\&add, \&edit, \&delete, \&import, \&showTable, \&showBut);
 	my %hash;
 	
 	my $database = DBI->connect(
@@ -28,7 +28,7 @@ sub st03
 		print "<form method=\"post\">
 			<input type=\"hidden\" name=\"student\" value=\"".$global->{student}."\">
 			<h1>List of diploma's themes</h1><br>";
-			print "	<button name=\"action\" type=\"submit\" value=\"5\">Import from dbm-file</button><br>";
+			print "	<button name=\"action\" type=\"submit\" value=\"3\">Import from dbm-file</button><br>";
 			
 			print "Student name: <input type=\"text\" name=\"name\" value=\"$name\"><br>";
 			print "Student diploma theme: <input type=\"text\" name=\"diplom\" value=\"$diplom\"><br>";
@@ -150,12 +150,11 @@ sub st03
 					(
 					
 					`name` ,
-					`diplom` ,
-					`dipRuk` ,					
+					`diplom` 			
 					)
 					VALUES 
 						(?, ?)");
-				$sql->execute($name,$diplom,$dipRuk);
+				$sql->execute($name,$diplom);
 				$sql->finish();
 			} 
 
@@ -167,12 +166,12 @@ sub st03
 
 	
 	my $com = $q->param('action');
-	if($com>=0 && $com<=2)
+	if($com>=0 && $com<=3)
 		{	
 			@menu[$com]->();
 		}
+	@menu[5]->();
 	@menu[4]->();
-	@menu[3]->();
 	print "<a href=\"$global->{selfurl}\">Back to main menu</a>";
 
 }
