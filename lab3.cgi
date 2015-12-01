@@ -27,6 +27,7 @@ use lab3::st31::st31;
 use lab3::st32::st32;
 use lab3::st33::st33;
 use lab3::st39::st39;
+use lab3::st43::st43;
 use lab3::st45::st45;
 use lab3::st46::st46;
 use lab3::st47::st47;
@@ -56,6 +57,7 @@ my @MODULES =
 	\&ST32::st32,
 	\&ST33::st33,
 	\&ST39::st39,
+	\&ST43::st43,
 	\&ST45::st45,
 	\&ST46::st46,
 	\&ST47::st47,
@@ -86,6 +88,7 @@ my @NAMES =
 	"32. Pyatakhina",
 	"33. Rekhlova",
 	"39. Stupin",
+	"43. Frolov",
 	"45. Yazkov",
 	"46. Bushmakin",
 	"47. Utenov",
