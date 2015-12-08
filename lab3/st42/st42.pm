@@ -95,7 +95,7 @@ sub st42
 			)
 		);
 		
-		print $q->hidden('person',$global->{'person'});
+		print $q->hidden('student',$global->{'student'});
 		
 		
 		
@@ -128,7 +128,7 @@ sub st42
 		{	
 			print $q->start_form;
 			print $q->hidden(-name => 'item', -value => $hash_ref->{'item'});
-			print $q->hidden('person',$global->{'person'});
+			print $q->hidden('student',$global->{'student'});
 			
 			print $q->Tr ( 
 			$q->td($i),
